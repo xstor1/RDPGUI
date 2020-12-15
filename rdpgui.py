@@ -43,10 +43,6 @@ class Ui_RDPGUI(object):
         self.enterButton.setGeometry(QtCore.QRect(430, 340, 31, 31))
         self.enterButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);"))
         self.enterButton.setText(_fromUtf8(""))
-        self.exitButton = QtGui.QPushButton(RDPGUI)
-        self.exitButton.setGeometry(QtCore.QRect(430, 400, 31, 31))
-        self.exitButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 100, 100);"))
-        self.exitButton.setText(_fromUtf8("Exit"))
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(_fromUtf8("enter.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.enterButton.setIcon(icon1)
@@ -108,7 +104,7 @@ class Ui_RDPGUI(object):
         self.RDPusername.setPlaceholderText(_translate("RDPGUI", "Uživatelské jméno", None))
         self.RDPpassword.setToolTip(_translate("RDPGUI", "Vložte uživatelské jméno", None))
         self.RDPpassword.setPlaceholderText(_translate("RDPGUI", "heslo", None))
-        self.version.setText(_translate("RDPGUI", "Administrátor: www.larvasystems.cz", None))
+        self.version.setText(_translate("RDPGUI", "LarvaSystems V1", None))
         self.serverlabel.setText(_translate("RDPGUI", "Počítač:", None))
         self.serverBox.setItemText(0, _translate("RDPGUI", "pc", None))
         self.domainlabel.setText(_translate("RDPGUI", "Doména:", None))
@@ -172,7 +168,7 @@ class Ui_RDPGUI(object):
 	else:
 		self.RDPusername.setText(_translate("RDPGUI", "", None))
 		self.RDPpassword.setText(_translate("RDPGUI", "", None))
-		self.version.setText(_translate("RDPGUI", "Administrátor: www.larvasystems.cz", None))
+		self.version.setText(_translate("RDPGUI", "LarvaSystems V1", None))
 		self.RDPdomain.setText(_translate("RDPGUI", config.get("DEFAULT", "RDPDomain"), None))
 		self.label.setText(_fromUtf8(""))
 
@@ -180,8 +176,8 @@ class Ui_RDPGUI(object):
 def centreWidget(self):
     screen = QtGui.QDesktopWidget().screenGeometry()
     mysize = self.geometry()
-    hpos = ( screen.width() - mysize.width() )
-    vpos = ( screen.height() - mysize.height() )
+    hpos = ( screen.width() - mysize.width() )/2
+    vpos = ( screen.height() - mysize.height() )/2
     self.move(hpos, vpos)
 
 
