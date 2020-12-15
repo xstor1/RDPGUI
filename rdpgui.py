@@ -105,14 +105,14 @@ class Ui_RDPGUI(object):
 
     def retranslateUi(self, RDPGUI):
         RDPGUI.setWindowTitle(_translate("RDPGUI", "RDPGUI", None))
-        self.RDPusername.setPlaceholderText(_translate("RDPGUI", "Username", None))
-        self.RDPpassword.setToolTip(_translate("RDPGUI", "Insert username", None))
-        self.RDPpassword.setPlaceholderText(_translate("RDPGUI", "Password", None))
-        self.version.setText(_translate("RDPGUI", "rpi-tc rdp gui v3", None))
-        self.serverlabel.setText(_translate("RDPGUI", "Server:", None))
-        self.serverBox.setItemText(0, _translate("RDPGUI", "server1.domain.lan", None))
-        self.domainlabel.setText(_translate("RDPGUI", "Domain:", None))
-        self.RDPdomain.setText(_translate("RDPGUI", "DOMAIN", None))
+        self.RDPusername.setPlaceholderText(_translate("RDPGUI", "Uživatelské jméno", None))
+        self.RDPpassword.setToolTip(_translate("RDPGUI", "Vložte uživatelské jméno", None))
+        self.RDPpassword.setPlaceholderText(_translate("RDPGUI", "heslo", None))
+        self.version.setText(_translate("RDPGUI", "Administrátor: www.larvasystems.cz", None))
+        self.serverlabel.setText(_translate("RDPGUI", "Počítač:", None))
+        self.serverBox.setItemText(0, _translate("RDPGUI", "pc", None))
+        self.domainlabel.setText(_translate("RDPGUI", "Doména:", None))
+        self.RDPdomain.setText(_translate("RDPGUI", "doména", None))
 	self.enterButton.clicked.connect(self.handleButton)
 	self.exitButton.clicked.connect(self.doExitNow)
 	config = ConfigParser.ConfigParser()
@@ -159,20 +159,20 @@ class Ui_RDPGUI(object):
 	print out
 	if out.find("Authentication failure, check credentials") > 0:
 		print "Authentication failure!"
-		self.version.setText(_translate("RDPGUI", "Auth Error...", None))
-		self.label.setText(_fromUtf8("Wrong username or password!"))
+		self.version.setText(_translate("RDPGUI", "Nastala chyba v ověření uživatele", None))
+		self.label.setText(_fromUtf8("Špatné jméno nebo heslo"))
 	elif out.find("getaddrinfo (System error)") > 0 or out.find("getaddrinfo: System error") >= 0:
 		print "Error connecting to server!"
-		self.version.setText(_translate("RDPGUI", "Server Error...", None))
-		self.label.setText(_fromUtf8("Server Error, call your sysadmin"))
+		self.version.setText(_translate("RDPGUI", "Chyba připojení k počítači.", None))
+		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli/učitelce."))
 	elif out.find("unable to connect to") >= 0 or out.find("A Remote Desktop Protocol client") >= 0:
 		print "Error connecting to server!"
-		self.version.setText(_translate("RDPGUI", "Server Error...", None))
-		self.label.setText(_fromUtf8("Server Error, call your sysadmin"))
+		self.version.setText(_translate("RDPGUI", "Chyba připojení k počítači.", None))
+		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli/učitelce."))
 	else:
 		self.RDPusername.setText(_translate("RDPGUI", "", None))
 		self.RDPpassword.setText(_translate("RDPGUI", "", None))
-		self.version.setText(_translate("RDPGUI", "rpi-tc rdp gui v1", None))
+		self.version.setText(_translate("RDPGUI", "Administrátor: www.larvasystems.cz", None))
 		self.RDPdomain.setText(_translate("RDPGUI", config.get("DEFAULT", "RDPDomain"), None))
 		self.label.setText(_fromUtf8(""))
 
@@ -180,8 +180,8 @@ class Ui_RDPGUI(object):
 def centreWidget(self):
     screen = QtGui.QDesktopWidget().screenGeometry()
     mysize = self.geometry()
-    hpos = ( screen.width() - mysize.width() ) / 2
-    vpos = ( screen.height() - mysize.height() ) / 2
+    hpos = ( screen.width() - mysize.width() )
+    vpos = ( screen.height() - mysize.height() )
     self.move(hpos, vpos)
 
 
