@@ -180,8 +180,8 @@ class Ui_RDPGUI(object):
 def centreWidget(self):
     screen = QtGui.QDesktopWidget().screenGeometry()
     mysize = self.geometry()
-    hpos = ( screen.width() - mysize.width() )
-    vpos = ( screen.height() - mysize.height() )
+    hpos = ( screen.width() - mysize.width() )/2
+    vpos = ( screen.height() - mysize.height() )/2
     self.move(hpos, vpos)
 
 
