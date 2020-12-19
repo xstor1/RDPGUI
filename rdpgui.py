@@ -43,10 +43,6 @@ class Ui_RDPGUI(object):
         self.enterButton.setGeometry(QtCore.QRect(430, 340, 31, 31))
         self.enterButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);"))
         self.enterButton.setText(_fromUtf8(""))
-        self.exitButton = QtGui.QPushButton(RDPGUI)
-        self.exitButton.setGeometry(QtCore.QRect(430, 400, 31, 31))
-        self.exitButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 100, 100);"))
-        self.exitButton.setText(_fromUtf8("Vypnout"))
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(_fromUtf8("enter.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.enterButton.setIcon(icon1)
@@ -114,7 +110,6 @@ class Ui_RDPGUI(object):
         self.domainlabel.setText(_translate("RDPGUI", "Doména:", None))
         self.RDPdomain.setText(_translate("RDPGUI", "doména", None))
 	self.enterButton.clicked.connect(self.handleButton)
-    self.exitButton.clicked.connect(self.doExitNow)
 	config = ConfigParser.ConfigParser()
 	config.read('rdpgui.ini')
 	serverlist = str(config.get("DEFAULT", "RDPServer")).split()
@@ -135,7 +130,7 @@ class Ui_RDPGUI(object):
 		self.RDPdomain.setText(_translate("RDPGUI", config.get("DEFAULT", "RDPDomain"), None))
 
     def doExitNow(self):
-    os.system("sudo shutdown -h now") 
+        sys.exit(app.exec_());
 
     def handleButton(self):
 	config = ConfigParser.ConfigParser()
@@ -164,11 +159,11 @@ class Ui_RDPGUI(object):
 	elif out.find("getaddrinfo (System error)") > 0 or out.find("getaddrinfo: System error") >= 0:
 		print "Error connecting to server!"
 		self.version.setText(_translate("RDPGUI", "Chyba připojení k počítači.", None))
-		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli."))
+		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli/učitelce."))
 	elif out.find("unable to connect to") >= 0 or out.find("A Remote Desktop Protocol client") >= 0:
 		print "Error connecting to server!"
 		self.version.setText(_translate("RDPGUI", "Chyba připojení k počítači.", None))
-		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli."))
+		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli/učitelce."))
 	else:
 		self.RDPusername.setText(_translate("RDPGUI", "", None))
 		self.RDPpassword.setText(_translate("RDPGUI", "", None))
