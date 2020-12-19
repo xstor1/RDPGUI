@@ -110,6 +110,7 @@ class Ui_RDPGUI(object):
         self.domainlabel.setText(_translate("RDPGUI", "Doména:", None))
         self.RDPdomain.setText(_translate("RDPGUI", "doména", None))
 	self.enterButton.clicked.connect(self.handleButton)
+	self.exitButton.clicked.connect(self.doExitNow)
 	config = ConfigParser.ConfigParser()
 	config.read('rdpgui.ini')
 	serverlist = str(config.get("DEFAULT", "RDPServer")).split()
