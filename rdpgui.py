@@ -44,7 +44,7 @@ class Ui_RDPGUI(object):
         self.enterButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);"))
         self.enterButton.setText(_fromUtf8(""))
         self.exitButton = QtGui.QPushButton(RDPGUI)
-        self.exitButton.setGeometry(QtCore.QRect(430, 400, 31, 31))
+        self.exitButton.setGeometry(QtCore.QRect(430, 400, 60, 31))
         self.exitButton.setStyleSheet(_fromUtf8("background-color: rgb(255, 100, 100);"))
         self.exitButton.setText(_fromUtf8("Vypnout"))
         icon1 = QtGui.QIcon()
