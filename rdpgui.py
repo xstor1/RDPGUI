@@ -108,7 +108,7 @@ class Ui_RDPGUI(object):
         self.RDPusername.setPlaceholderText(_translate("RDPGUI", "Uživatelské jméno", None))
         self.RDPpassword.setToolTip(_translate("RDPGUI", "Vložte uživatelské jméno", None))
         self.RDPpassword.setPlaceholderText(_translate("RDPGUI", "heslo", None))
-        self.version.setText(_translate("RDPGUI", "Administrátor: www.larvasystems.cz", None))
+        self.version.setText(_translate("RDPGUI", "LarvaSystems V1", None))
         self.serverlabel.setText(_translate("RDPGUI", "Počítač:", None))
         self.serverBox.setItemText(0, _translate("RDPGUI", "pc", None))
         self.domainlabel.setText(_translate("RDPGUI", "Doména:", None))
@@ -135,7 +135,7 @@ class Ui_RDPGUI(object):
 		self.RDPdomain.setText(_translate("RDPGUI", config.get("DEFAULT", "RDPDomain"), None))
 
     def doExitNow(self):
-        sys.exit(app.exec_());
+         os.system("sudo shutdown -h now");
 
     def handleButton(self):
 	config = ConfigParser.ConfigParser()
@@ -164,15 +164,15 @@ class Ui_RDPGUI(object):
 	elif out.find("getaddrinfo (System error)") > 0 or out.find("getaddrinfo: System error") >= 0:
 		print "Error connecting to server!"
 		self.version.setText(_translate("RDPGUI", "Chyba připojení k počítači.", None))
-		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli/učitelce."))
+		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli."))
 	elif out.find("unable to connect to") >= 0 or out.find("A Remote Desktop Protocol client") >= 0:
 		print "Error connecting to server!"
 		self.version.setText(_translate("RDPGUI", "Chyba připojení k počítači.", None))
-		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli/učitelce."))
+		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli."))
 	else:
 		self.RDPusername.setText(_translate("RDPGUI", "", None))
 		self.RDPpassword.setText(_translate("RDPGUI", "", None))
-		self.version.setText(_translate("RDPGUI", "Administrátor: www.larvasystems.cz", None))
+		self.version.setText(_translate("RDPGUI", "LarvaSystems V1", None))
 		self.RDPdomain.setText(_translate("RDPGUI", config.get("DEFAULT", "RDPDomain"), None))
 		self.label.setText(_fromUtf8(""))
 
