@@ -157,17 +157,17 @@ class Ui_RDPGUI(object):
 	(out, err) = proc.communicate()
 	print "-------------------------------------------------------------"
 	print out
-	if out.find("Authentication failure, check credentials") > 0:
+	if out.find("ERRCONNECT_LOGON_FAILURE") > 0:
 		print "Authentication failure!"
-		self.version.setText(_translate("RDPGUI", "Nastala chyba v ověření uživatele", None))
+		self.version.setText(_translate("RDPGUI", "Bad password", None))
 		self.label.setText(_fromUtf8("Špatné jméno nebo heslo"))
 	elif out.find("getaddrinfo (System error)") > 0 or out.find("getaddrinfo: System error") >= 0:
 		print "Error connecting to server!"
-		self.version.setText(_translate("RDPGUI", "Chyba připojení k počítači.", None))
+		self.version.setText(_translate("RDPGUI", "Network error", None))
 		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli."))
-	elif out.find("unable to connect to") >= 0 or out.find("A Remote Desktop Protocol client") >= 0:
+	elif out.find("failed to connect to") >= 0 or out.find("A Remote Desktop Protocol client") >= 0:
 		print "Error connecting to server!"
-		self.version.setText(_translate("RDPGUI", "Chyba připojení k počítači.", None))
+		self.version.setText(_translate("RDPGUI", "PC Network error", None))
 		self.label.setText(_fromUtf8("Chyba připojení, nahlašte problém učiteli."))
 	else:
 		self.RDPusername.setText(_translate("RDPGUI", "", None))
